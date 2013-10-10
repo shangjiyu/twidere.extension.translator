@@ -1,5 +1,11 @@
 <resources>
 
     <string name="app_name">Twidere.extension.translator</string>
+    <string name="baidu_translate_api">Baidu Translate API</string>
+    <string name="microsoft_translate_api">Microsoft Translate API</string>
+    <string name="client_id">Clinet ID</string>
+    <string name="client_secret">Client Secret</string>
+    <string name="baidu_translate_api_setting_title">baidu translate api setting title</string>
+    <string name="microsoft_translate_api_setting_title">Microsoft Translate API setting</string>
 
 </resources>

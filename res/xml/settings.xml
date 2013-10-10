@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory android:title="@string/baidu_translate_api" android:key="@string/baidu_translate_api" android:summary="setting about baidu api">
+            <CheckBoxPreference android:key="@string/baidu_translate_api" android:title="@string/baidu_translate_api_setting_title"/>
+            <EditTextPreference android:title="@string/client_id" android:key="@string/client_id"/>
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/microsoft_translate_api" android:key="@string/microsoft_translate_api" android:summary="setting about mst">
+            <CheckBoxPreference android:key="@string/microsoft_translate_api" android:title="@string/microsoft_translate_api_setting_title"/>
+            <EditTextPreference />
+            <EditTextPreference />
+        </PreferenceCategory>
+    </PreferenceScreen>
