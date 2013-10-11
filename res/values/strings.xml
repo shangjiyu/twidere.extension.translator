@@ -7,5 +7,6 @@
     <string name="client_secret">Client Secret</string>
     <string name="baidu_translate_api_setting_title">baidu translate api setting title</string>
     <string name="microsoft_translate_api_setting_title">Microsoft Translate API setting</string>
+    <string name="translate_layout_title">BaiduTranslator</string>
 
 </resources>
