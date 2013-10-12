@@ -1,7 +1,7 @@
 /*******************************************************
  * @Title: SetttingsActivity.java
  * @Package org.shangjiyu.twidere.extension.translaetor
- * @Description: TODO(用一句话描述该文件做什么)
+ * @Description: TODO(显示设置页面)
  * @author shangjiyu
  * @date 2013-10-10 下午1:55:28
  * @version V1.0
@@ -19,7 +19,7 @@ import android.preference.PreferenceActivity;
 
 /********************************************************
  * @ClassName: SetttingsActivity
- * @Description: TODO(这里用一句话描述这个类的作用)
+ * @Description: TODO(设置页面)
  * @author shangjiyu
  * @date 2013-10-10 下午1:55:28
  */
