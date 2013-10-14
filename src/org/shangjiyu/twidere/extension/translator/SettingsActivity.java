@@ -16,6 +16,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceActivity;
+import android.widget.Toast;
 
 /********************************************************
  * @ClassName: SettingsActivity
@@ -52,7 +53,21 @@ public class SettingsActivity extends PreferenceActivity implements
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
 		// TODO Auto-generated method stub
-		
+		if (sharedPreferences.getBoolean(getString(R.string.baidu_translate_api_checkbox), false)) {
+			String baiduAPIKey = sharedPreferences.getString(getString(R.string.baidu_client_id_value), null);
+			if ( baiduAPIKey != null && baiduAPIKey.length() == 24) {
+				BDTranslate.BDTRANSLATEKEY_STRING = baiduAPIKey;
+			}else {
+				Toast.makeText(SettingsActivity.this, "incorrec baidu app key!please reinpiut", Toast.LENGTH_LONG).show();
+			}
+		}else if (sharedPreferences.getBoolean(getString(R.string.microsoft_translate_api_checkbox), false)) {
+			String bingAPIkey = sharedPreferences.getString(getString(R.string.microsoft_client_secret_value), null);
+			if (bingAPIkey != null && bingAPIkey.length() == 44) {
+				MSTranslate.CLIEND_SECRET_STRING = bingAPIkey;
+			}else {
+				Toast.makeText(SettingsActivity.this, "incorrec Bing API Secret!please reinpiut", Toast.LENGTH_LONG).show();
+			}
+		}
 	}
 	
 

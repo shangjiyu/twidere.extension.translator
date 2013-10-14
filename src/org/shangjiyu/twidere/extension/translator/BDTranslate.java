@@ -37,7 +37,7 @@ import org.json.JSONObject;
 
 public class BDTranslate implements Constants {
 
-	private static final String BDTRANSLATEKEY_STRING = Constants.BAIDU_CLIENT_ID;
+	protected static String BDTRANSLATEKEY_STRING = Constants.BAIDU_CLIENT_ID;
 	private static final String BDTRANSLATEURL_STRING = Constants.BDTRANSLATEURL_STRING;
 	private static final Pattern PATTERN_LINK = Pattern.compile(Constants.NONEED2TRANSLAETPORTION, Pattern.CASE_INSENSITIVE);
 	private static final Pattern PATTERN_ALPHA = Pattern.compile("_____|_ _ _ _ _");

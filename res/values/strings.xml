@@ -10,7 +10,8 @@
     <string name="baidu_client_id">BaiduClinetID</string>
     <string name="bing_client_id">BingClinetID</string>
     <string name="client_secret">Client Secret</string>
-    <string name="microsoft_client_secret_value">l/t7OPv/O+Ye68qESMF2RwN7pV+jajAxrW8YDrMbmoo=</string>
+     <string name="Bing_client_secret">Bing Client Secret</string>
+    <string name="Bing_client_secret_value">l/t7OPv/O+Ye68qESMF2RwN7pV+jajAxrW8YDrMbmoo=</string>
     <string name="baidu_client_id_value">0QLIOD1cdfmA1hH1D7wN1nHy</string>
     <string name="microsoft_client_id_value">firefox_inline_translate</string>
     <string name="baidu_translate_api_setting_title">baidu translate api setting title</string>

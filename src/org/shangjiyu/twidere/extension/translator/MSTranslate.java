@@ -55,8 +55,8 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 public class MSTranslate implements Constants {
 
-	private static final String CLIEND_ID_STRING = Constants.MICROSOFT_CLIENT_ID;
-	private static final String CLIEND_SECRET_STRING = Constants.MICROSOFT_CLIEN_SECRET;
+	protected static String CLIEND_ID_STRING = Constants.MICROSOFT_CLIENT_ID;
+	protected static String CLIEND_SECRET_STRING = Constants.MICROSOFT_CLIEN_SECRET;
 	private static final String SCOPE_STRING = Constants.SCOPE_STRING;
 	private static final String GRANT_TYPE_STRING = Constants.GRANT_TYPE_STRING;
 	private static final String DATAMARKETACCESSURL_STRING = Constants.DATAMARKETACCESSURL_STRING;
