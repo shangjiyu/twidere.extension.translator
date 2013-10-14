@@ -58,14 +58,14 @@ public class SettingsActivity extends PreferenceActivity implements
 			if ( baiduAPIKey != null && baiduAPIKey.length() == 24) {
 				BDTranslate.BDTRANSLATEKEY_STRING = baiduAPIKey;
 			}else {
-				Toast.makeText(SettingsActivity.this, "incorrec baidu app key!please reinpiut", Toast.LENGTH_LONG).show();
+				Toast.makeText(SettingsActivity.this, "incorrect baidu app key!please reinpiut", Toast.LENGTH_SHORT).show();
 			}
 		}else if (sharedPreferences.getBoolean(getString(R.string.microsoft_translate_api_checkbox), false)) {
-			String bingAPIkey = sharedPreferences.getString(getString(R.string.microsoft_client_secret_value), null);
+			String bingAPIkey = sharedPreferences.getString(getString(R.string.Bing_client_secret_value), null);
 			if (bingAPIkey != null && bingAPIkey.length() == 44) {
 				MSTranslate.CLIEND_SECRET_STRING = bingAPIkey;
 			}else {
-				Toast.makeText(SettingsActivity.this, "incorrec Bing API Secret!please reinpiut", Toast.LENGTH_LONG).show();
+				Toast.makeText(SettingsActivity.this, "incorrect Bing API Secret!please reinpiut", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

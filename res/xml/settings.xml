@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
     <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-        <PreferenceCategory android:title="@string/baidu_translate_api" android:key="@string/baidu_translate_api" android:summary="setting about baidu api">
-            <CheckBoxPreference android:key="@string/baidu_translate_api_checkbox" android:title="@string/baidu_translate_api_setting_title" android:enabled="true" android:defaultValue="true"/>
-            <EditTextPreference android:title="@string/client_id" android:dependency="@string/baidu_translate_api_checkbox" android:defaultValue="@string/baidu_client_id_value" android:summary="@string/baidu_client_id" android:enabled="true" />
+        <PreferenceCategory 
+            android:title="@string/baidu_translate_api_settings" 
+            android:key="@string/baidu_translate_api_settings" 
+            android:summary="setting about baidu api">
+            <CheckBoxPreference 
+                android:key="@string/baidu_translate_api_checkbox" 
+                android:title="@string/baidu_translate_api_setting_title" 
+                android:enabled="true" 
+                android:defaultValue="true"/>
+            <EditTextPreference 
+                android:title="@string/client_id" 
+                android:dependency="@string/baidu_translate_api_checkbox" 
+                android:defaultValue="@string/baidu_client_id_value" 
+                android:summary="@string/baidu_client_id" 
+                android:enabled="true" 
+                android:key="@string/baidu_client_id"/>
         </PreferenceCategory>
-        <PreferenceCategory android:title="@string/microsoft_translate_api" android:key="@string/microsoft_translate_api" android:summary="setting about mst">
-            <CheckBoxPreference android:key="@string/microsoft_translate_api_checkbox" android:title="@string/microsoft_translate_api_setting_title" android:defaultValue="false"/>
-            <EditTextPreference android:key="@string/client_id" android:title="@string/client_id" android:dependency="@string/microsoft_translate_api_checkbox" android:defaultValue="@string/microsoft_client_id_value" android:summary="@string/bing_client_id" android:enabled="true"/>
-            <EditTextPreference android:key="@string/client_secret" android:dependency="@string/microsoft_translate_api_checkbox" android:title="@string/client_secret" android:defaultValue="@string/Bing_client_secret_value" android:summary="@string/Bing_client_secret" android:enabled="true"/>
+        <PreferenceCategory 
+            android:title="@string/microsoft_translate_api_settings" 
+            android:key="@string/microsoft_translate_api_settings" 
+            android:summary="setting about mst">
+            <CheckBoxPreference 
+                android:key="@string/microsoft_translate_api_checkbox" 
+                android:title="@string/microsoft_translate_api_setting_title" 
+                android:defaultValue="false"/>
+            <EditTextPreference 
+                android:key="@string/Bing_client_id" 
+                android:title="@string/Bing_client_id" 
+                android:dependency="@string/microsoft_translate_api_checkbox" 
+                android:defaultValue="@string/Bing_client_id_value" 
+                android:summary="@string/Bing_client_id" 
+                android:enabled="true"/>
+            <EditTextPreference 
+                android:key="@string/Bing_client_secret" 
+                android:dependency="@string/microsoft_translate_api_checkbox" 
+                android:title="@string/Bing_client_secret" 
+                android:defaultValue="@string/Bing_client_secret_value" 
+                android:summary="@string/Bing_client_secret" 
+                android:enabled="true"/>
         </PreferenceCategory>
     </PreferenceScreen>
