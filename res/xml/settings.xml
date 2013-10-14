@@ -15,7 +15,8 @@
                 android:defaultValue="@string/baidu_client_id_value" 
                 android:summary="@string/baidu_client_id" 
                 android:enabled="true" 
-                android:key="@string/baidu_client_id"/>
+                android:key="@string/baidu_client_id"
+                android:dialogTitle="@string/baidu_client_id"/>
         </PreferenceCategory>
         <PreferenceCategory 
             android:title="@string/microsoft_translate_api_settings" 
@@ -31,13 +32,15 @@
                 android:dependency="@string/microsoft_translate_api_checkbox" 
                 android:defaultValue="@string/Bing_client_id_value" 
                 android:summary="@string/Bing_client_id" 
-                android:enabled="true"/>
+                android:enabled="true"
+                android:dialogTitle="@string/Bing_client_id"/>
             <EditTextPreference 
                 android:key="@string/Bing_client_secret" 
                 android:dependency="@string/microsoft_translate_api_checkbox" 
                 android:title="@string/Bing_client_secret" 
                 android:defaultValue="@string/Bing_client_secret_value" 
                 android:summary="@string/Bing_client_secret" 
-                android:enabled="true"/>
+                android:enabled="true"
+                android:dialogTitle="@string/Bing_client_secret"/>
         </PreferenceCategory>
     </PreferenceScreen>

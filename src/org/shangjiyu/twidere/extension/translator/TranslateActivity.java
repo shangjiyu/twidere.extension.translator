@@ -41,7 +41,7 @@ import android.widget.Toast;
 
 public class TranslateActivity extends Activity implements Constants,org.mariotaku.twidere.Constants,OnClickListener {	
 
-	private TextView mPreview;
+	private TextView mPreview, layoutTitle;
 	private ImageButton mActionButton;
 	private ProgressBar mProgress;
 	private String mUser;
@@ -80,6 +80,7 @@ public class TranslateActivity extends Activity implements Constants,org.mariota
 		}
 		
 		mPreview = (TextView) findViewById(R.id.text);
+		layoutTitle = (TextView) findViewById(R.id.translat_layout_title);
 		mActionButton = (ImageButton) findViewById(R.id.action);
 		mProgress = (ProgressBar) findViewById(R.id.progress);
 		TRANSLATED_STRING = savedInstanceState != null ? savedInstanceState.getString(Twidere.INTENT_KEY_TEXT) : null;
@@ -127,6 +128,7 @@ public class TranslateActivity extends Activity implements Constants,org.mariota
 	 */
 	private void initTranslateTask(){
 		if (isBaiduTranslateAPI) {
+			layoutTitle.setText(R.string.baidu_translate_layout_title);
 			if (mBDTranslateTask != null) {
 				mBDTranslateTask.cancel(true);
 			}else {
@@ -134,6 +136,7 @@ public class TranslateActivity extends Activity implements Constants,org.mariota
 				mBDTranslateTask.execute();
 			}
 		}else {
+			layoutTitle.setText(R.string.Bing_translate_layout_title);
 			if (mMSTranslateTask != null) {
 				mMSTranslateTask.cancel(true);
 			}else {

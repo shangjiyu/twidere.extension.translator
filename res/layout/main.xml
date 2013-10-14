@@ -13,11 +13,12 @@
 		android:orientation="horizontal">
 
 		<TextView
+		    android:id="@+id/translat_layout_title"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:paddingLeft="8dp"
-			android:text="@string/translate_layout_title"
+			android:text="@string/baidu_translate_layout_title"
 			android:textAppearance="?android:attr/textAppearanceLarge"/>
 		
 		<ImageButton 
