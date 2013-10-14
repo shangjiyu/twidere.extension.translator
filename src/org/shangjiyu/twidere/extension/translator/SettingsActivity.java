@@ -1,5 +1,5 @@
 /*******************************************************
- * @Title: SetttingsActivity.java
+ * @Title: SettingsActivity.java
  * @Package org.shangjiyu.twidere.extension.translaetor
  * @Description: TODO(显示设置页面)
  * @author shangjiyu
@@ -7,7 +7,7 @@
  * @version V1.0
  ********************************************************/
 
-package org.shangjiyu.twidere.extension.translaetor;
+package org.shangjiyu.twidere.extension.translator;
 
 import org.shangjiyu.twidere.extension.translator.R;
 
@@ -18,13 +18,13 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceActivity;
 
 /********************************************************
- * @ClassName: SetttingsActivity
+ * @ClassName: SettingsActivity
  * @Description: TODO(设置页面)
  * @author shangjiyu
  * @date 2013-10-10 下午1:55:28
  */
 
-public class SetttingsActivity extends PreferenceActivity implements
+public class SettingsActivity extends PreferenceActivity implements
 		OnSharedPreferenceChangeListener {
 
 	private SharedPreferences sharedPreferences;

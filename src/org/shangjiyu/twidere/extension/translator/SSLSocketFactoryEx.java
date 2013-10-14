@@ -7,7 +7,7 @@
  * @version V1.0
  ********************************************************/
 
-package org.shangjiyu.twidere.extension.translaetor;
+package org.shangjiyu.twidere.extension.translator;
 
 import java.io.IOException;
 import java.net.Socket;

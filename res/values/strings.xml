@@ -1,12 +1,25 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">Twidere.extension.translator</string>
+    <string name="extension_translate_name">Translate</string>
     <string name="baidu_translate_api">Baidu Translate API</string>
+    <string name="baidu_translate_api_checkbox">BDTCheckbox</string>
     <string name="microsoft_translate_api">Microsoft Translate API</string>
+    <string name="microsoft_translate_api_checkbox">MSTCheckbox</string>
     <string name="client_id">Clinet ID</string>
+    <string name="baidu_client_id">BaiduClinetID</string>
+    <string name="bing_client_id">BingClinetID</string>
     <string name="client_secret">Client Secret</string>
+    <string name="microsoft_client_secret_value">l/t7OPv/O+Ye68qESMF2RwN7pV+jajAxrW8YDrMbmoo=</string>
+    <string name="baidu_client_id_value">0QLIOD1cdfmA1hH1D7wN1nHy</string>
+    <string name="microsoft_client_id_value">firefox_inline_translate</string>
     <string name="baidu_translate_api_setting_title">baidu translate api setting title</string>
     <string name="microsoft_translate_api_setting_title">Microsoft Translate API setting</string>
     <string name="translate_layout_title">BaiduTranslator</string>
+    <string name="share">Share</string>
+    <string name="waiting_for_bing_translated_text">Waiting For Bing Translate Results</string>
+    <string name="waiting_for_baidu_translated_text">Waiting For Baidu Translate Results</string>
+    <string name="error_message">Error: <xliff:g id="message">%s</xliff:g></string>
+    <string name="error_unknown_error">Error: Unknown error, this is probably a bug.</string>
 
 </resources>

@@ -7,7 +7,7 @@
  * @version V1.0
  */
 
-package org.shangjiyu.twidere.extension.translaetor;
+package org.shangjiyu.twidere.extension.translator;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,11 +35,11 @@ import org.json.JSONObject;
  *
  */
 
-public class BDTranslate {
+public class BDTranslate implements Constants {
 
-	private static final String BDTRANSLATEKEY_STRING = "0QLIOD1cdfmA1hH1D7wN1nHy";
-	private static final String BDTRANSLATEURL_STRING = "http://openapi.baidu.com/public/2.0/bmt/translate";
-	private static final Pattern PATTERN_LINK = Pattern.compile("((RT\\s?)?(@([a-zA-Z0-9_\\u4e00-\\u9fa5]{1,20})):?)|((https?://)([-\\w\\.]+)+(:\\d+)?(/([\\w/_\\-\\.]*(\\?\\S+)?)?)?)|(\\#[a-zA-Z0-9_%\\u4e00-\\u9fa5]*)", Pattern.CASE_INSENSITIVE);
+	private static final String BDTRANSLATEKEY_STRING = Constants.BAIDU_CLIENT_ID;
+	private static final String BDTRANSLATEURL_STRING = Constants.BDTRANSLATEURL_STRING;
+	private static final Pattern PATTERN_LINK = Pattern.compile(Constants.NONEED2TRANSLAETPORTION, Pattern.CASE_INSENSITIVE);
 	private static final Pattern PATTERN_ALPHA = Pattern.compile("_____|_ _ _ _ _");
 	private final ArrayList<String> linkStrings = new ArrayList<String>();
 	private int uneed2TranslateElementIndex = 0;
@@ -48,7 +48,7 @@ public class BDTranslate {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TranslateResponse postTranslate(String srcContent) throws BDTranslateException, IllegalStateException, JSONException {
+	public BDTranslateResponse postTranslate(String srcContent) throws BDTranslateException, IllegalStateException, JSONException {
 		try {
 			String queryString = "";
 			final Matcher matcher = PATTERN_LINK.matcher(srcContent);
@@ -71,7 +71,7 @@ public class BDTranslate {
 			args.add(new BasicNameValuePair("q", queryString));
 			httpPost.setEntity(new UrlEncodedFormEntity(args, HTTP.UTF_8));
 			final HttpResponse response = httpclient.execute(httpPost);
-			return parseTranslateResponse(EntityUtils.toString(response.getEntity()));
+			return parseBDTranslateResponse(EntityUtils.toString(response.getEntity()));
 		} catch (final IOException e) {
 			throw new BDTranslateException(e);
 		}
@@ -86,13 +86,13 @@ public class BDTranslate {
 	 * @return TranslateResponse    返回类型
 	 * @throws
 	 */
-	public TranslateResponse parseTranslateResponse(String response) throws JSONException {
+	public BDTranslateResponse parseBDTranslateResponse(String response) throws JSONException {
 		String from = null, to = null, translateResult = "";
 		JSONObject translateResponse = new JSONObject(response);
 		from = translateResponse.getString("from");
 		to = translateResponse.getString("to");
 		if (!translateResponse.isNull("error_code")) {
-			return new TranslateResponse(from, to, translateResponse.getString("error_message"));
+			return new BDTranslateResponse(from, to, translateResponse.getString("error_message"));
 		}
 		JSONArray resultArray = translateResponse.getJSONArray("trans_result");
 		for (int i = 0; i < resultArray.length(); i++) {
@@ -100,7 +100,7 @@ public class BDTranslate {
 		}
 		translateResult = replaceURL(PATTERN_ALPHA, translateResult);
 		translateResult = translateResult.replaceAll("\\r\\n", " ");
-		return new TranslateResponse(from, to, translateResult);
+		return new BDTranslateResponse(from, to, translateResult);
 	}
 	
 	public String replaceURL(Pattern pattern,String toReplaceString) {
@@ -142,10 +142,10 @@ public class BDTranslate {
 	 * @date 2013-9-21 下午4:18:58
 	 *
 	 */
-	public static class TranslateResponse {
+	public static class BDTranslateResponse {
 		public final String from, to, translateResult;
 
-		private TranslateResponse(String from, String to, String translateResult) {
+		private BDTranslateResponse(String from, String to, String translateResult) {
 			this.from = from;
 			this.to = to;
 			this.translateResult = translateResult;

@@ -19,7 +19,7 @@
 			android:paddingLeft="8dp"
 			android:text="@string/translate_layout_title"
 			android:textAppearance="?android:attr/textAppearanceLarge"/>
-
+		
 		<ImageButton 
 			    android:id="@+id/translate"
 			    android:layout_width="56dp"
@@ -27,7 +27,7 @@
 			    android:onClick="onClick"
 			    android:background="@drawable/list_selector_holo_dark"
 			    android:src="@drawable/ic_translate"/>
-		
+
 		<FrameLayout
 			android:id="@+id/action_progress_layout"
 			android:layout_width="56dp"
@@ -39,7 +39,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center"
-				android:visibility="gone"/>
+				android:visibility="visible"/>
 
 			<ImageButton
 				android:id="@+id/action"
@@ -47,7 +47,8 @@
 				android:layout_height="match_parent"
 				android:background="@drawable/list_selector_holo_dark"
 				android:onClick="onClick"
-				android:src="@drawable/ic_menu_send"/>
+				android:src="@drawable/ic_menu_share"
+				android:visibility="gone"/>
 		</FrameLayout>
 	</LinearLayout>
 

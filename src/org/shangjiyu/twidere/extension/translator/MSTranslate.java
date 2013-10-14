@@ -7,7 +7,7 @@
  * @version V1.0
  */
 
-package org.shangjiyu.twidere.extension.translaetor;
+package org.shangjiyu.twidere.extension.translator;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -53,15 +53,15 @@ import org.xmlpull.v1.XmlPullParserFactory;
  *
  */
 
-public class MSTranslate {
+public class MSTranslate implements Constants {
 
-	private static final String CLIEND_ID_STRING = "firefox_inline_translate";
-	private static final String CLIEND_SECRET_STRING = "l/t7OPv/O+Ye68qESMF2RwN7pV+jajAxrW8YDrMbmoo=";
-	private static final String SCOPE_STRING = "http://api.microsofttranslator.com";
-	private static final String GRANT_TYPE_STRING = "client_credentials";
-	private static final String DATAMARKETACCESSURL_STRING = "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13";
-	private static final String MSTRANSLATEURL_STRING = "http://api.microsofttranslator.com/V2/Http.svc/Translate";
-	private static final Pattern PATTERN_LINK = Pattern.compile("((RT\\s?)?(@([a-zA-Z0-9_\\u4e00-\\u9fa5]{1,20})):?)|((https?://)([-\\w\\.]+)+(:\\d+)?(/([\\w/_\\-\\.]*(\\?\\S+)?)?)?)|(\\#[a-zA-Z0-9_%\\u4e00-\\u9fa5]*)", Pattern.CASE_INSENSITIVE);
+	private static final String CLIEND_ID_STRING = Constants.MICROSOFT_CLIENT_ID;
+	private static final String CLIEND_SECRET_STRING = Constants.MICROSOFT_CLIEN_SECRET;
+	private static final String SCOPE_STRING = Constants.SCOPE_STRING;
+	private static final String GRANT_TYPE_STRING = Constants.GRANT_TYPE_STRING;
+	private static final String DATAMARKETACCESSURL_STRING = Constants.DATAMARKETACCESSURL_STRING;
+	private static final String MSTRANSLATEURL_STRING = Constants.MSTRANSLATEURL_STRING;
+	private static final Pattern PATTERN_LINK = Pattern.compile(Constants.NONEED2TRANSLAETPORTION, Pattern.CASE_INSENSITIVE);
 	private static final Pattern PATTERN_ALPHA = Pattern.compile("(777)");
 	private final ArrayList<String> linkStrings = new ArrayList<String>();
 	private String ACCESS_TOKEN_STRING = null;
@@ -71,7 +71,7 @@ public class MSTranslate {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TranslateResponse postTranslate(String srcContent, String to) throws MSTranslateException, IllegalStateException, JSONException {
+	public MSTranslateResponse postTranslate(String srcContent, String to) throws MSTranslateException, IllegalStateException, JSONException {
 		try {
 			String queryString = "";
 			final Matcher matcher = PATTERN_LINK.matcher(srcContent);
@@ -147,7 +147,7 @@ public class MSTranslate {
 	 * @return TranslateResponse    返回类型
 	 * @throws
 	 */
-	public TranslateResponse parseTranslateResponse(String src,String response) throws JSONException, XmlPullParserException, IOException, IllegalStateException, MSTranslateException {
+	public MSTranslateResponse parseTranslateResponse(String src,String response) throws JSONException, XmlPullParserException, IOException, IllegalStateException, MSTranslateException {
 		String from = "yangpi", to = "chinese", translateResult = "";
 		final XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 		factory.setNamespaceAware(true);
@@ -164,7 +164,7 @@ public class MSTranslate {
 			return postTranslate(src, "en");
 		}else {
 			translateResult = replaceURL(PATTERN_ALPHA, translateResult);
-			return new TranslateResponse(from, to, translateResult);
+			return new MSTranslateResponse(from, to, translateResult);
 		}
 	}
 	
@@ -207,10 +207,10 @@ public class MSTranslate {
 	 * @date 2013-9-21 下午4:18:58
 	 *
 	 */
-	public static class TranslateResponse {
+	public static class MSTranslateResponse {
 		public final String from, to, translateResult;
 
-		private TranslateResponse(String from, String to, String translateResult) {
+		private MSTranslateResponse(String from, String to, String translateResult) {
 			this.from = from;
 			this.to = to;
 			this.translateResult = translateResult;

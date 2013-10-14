@@ -7,7 +7,7 @@
  * @version V1.0
  ********************************************************/
 
-package org.shangjiyu.twidere.extension.translaetor;
+package org.shangjiyu.twidere.extension.translator;
 /********************************************************
  * @ClassName: Constants
  * @Description: TODO(预定义的一些常量)
@@ -19,7 +19,7 @@ public interface Constants {
 	
 	public static final String LOGCAT = "twidere.extension.translator";
 	
-	public static final String BAIDU_CLIENT_ID = "appid745edjmdd5";
+	public static final String BAIDU_CLIENT_ID = "0QLIOD1cdfmA1hH1D7wN1nHy";
 	public static final String BDTRANSLATEURL_STRING = "http://openapi.baidu.com/public/2.0/bmt/translate";
 	
 	public static final String MICROSOFT_CLIENT_ID = "firefox_inline_translate";
