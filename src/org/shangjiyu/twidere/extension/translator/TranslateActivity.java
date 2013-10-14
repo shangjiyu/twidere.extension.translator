@@ -129,6 +129,7 @@ public class TranslateActivity extends Activity implements Constants,org.mariota
 	private void initTranslateTask(){
 		if (isBaiduTranslateAPI) {
 			layoutTitle.setText(R.string.baidu_translate_layout_title);
+			BDTranslate.BDTRANSLATEKEY_STRING = sharedPreferences.getString(getString(R.string.baidu_client_id), Constants.BAIDU_CLIENT_ID);
 			if (mBDTranslateTask != null) {
 				mBDTranslateTask.cancel(true);
 			}else {
@@ -137,6 +138,7 @@ public class TranslateActivity extends Activity implements Constants,org.mariota
 			}
 		}else {
 			layoutTitle.setText(R.string.Bing_translate_layout_title);
+			MSTranslate.CLIEND_SECRET_STRING = sharedPreferences.getString(getString(R.string.Bing_client_secret), Constants.MICROSOFT_CLIEN_SECRET);
 			if (mMSTranslateTask != null) {
 				mMSTranslateTask.cancel(true);
 			}else {

@@ -56,7 +56,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 public class MSTranslate implements Constants {
 
 	protected static String CLIEND_ID_STRING = Constants.MICROSOFT_CLIENT_ID;
-	protected static String CLIEND_SECRET_STRING = Constants.MICROSOFT_CLIEN_SECRET;
+	protected static String CLIEND_SECRET_STRING;
 	private static final String SCOPE_STRING = Constants.SCOPE_STRING;
 	private static final String GRANT_TYPE_STRING = Constants.GRANT_TYPE_STRING;
 	private static final String DATAMARKETACCESSURL_STRING = Constants.DATAMARKETACCESSURL_STRING;
@@ -118,10 +118,11 @@ public class MSTranslate implements Constants {
 		try {
 //			final HttpClient httpclient = new DefaultHttpClient();
 			final HttpClient httpclient = getNewHttpClient();
+//			System.out.println(MSTranslate.CLIEND_SECRET_STRING);
 			final HttpPost httpPost = new HttpPost(DATAMARKETACCESSURL_STRING);
 			final ArrayList<NameValuePair> args = new ArrayList<NameValuePair>();
-			args.add(new BasicNameValuePair("client_id", CLIEND_ID_STRING));
-			args.add(new BasicNameValuePair("client_secret", CLIEND_SECRET_STRING));
+			args.add(new BasicNameValuePair("client_id", MSTranslate.CLIEND_ID_STRING));
+			args.add(new BasicNameValuePair("client_secret", MSTranslate.CLIEND_SECRET_STRING));
 			args.add(new BasicNameValuePair("scope", SCOPE_STRING));
 			args.add(new BasicNameValuePair("grant_type", GRANT_TYPE_STRING));
 			httpPost.setEntity(new UrlEncodedFormEntity(args, HTTP.UTF_8));

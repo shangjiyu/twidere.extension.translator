@@ -17,7 +17,7 @@
     <string name="baidu_translate_api_setting_title">baidu translate api setting title</string>
     <string name="microsoft_translate_api_setting_title">Microsoft Translate API setting</string>
     <string name="baidu_translate_layout_title">BaiduTranslator</string>
-    <string name="Bing_translate_layout_title">MicosoftTranslator</string>
+    <string name="Bing_translate_layout_title">BingTranslator</string>
     <string name="share">Share</string>
     <string name="waiting_for_bing_translated_text">Waiting For Bing Translate Results</string>
     <string name="waiting_for_baidu_translated_text">Waiting For Baidu Translate Results</string>

@@ -37,7 +37,7 @@ import org.json.JSONObject;
 
 public class BDTranslate implements Constants {
 
-	protected static String BDTRANSLATEKEY_STRING = Constants.BAIDU_CLIENT_ID;
+	protected static String BDTRANSLATEKEY_STRING;
 	private static final String BDTRANSLATEURL_STRING = Constants.BDTRANSLATEURL_STRING;
 	private static final Pattern PATTERN_LINK = Pattern.compile(Constants.NONEED2TRANSLAETPORTION, Pattern.CASE_INSENSITIVE);
 	private static final Pattern PATTERN_ALPHA = Pattern.compile("_____|_ _ _ _ _");
@@ -61,11 +61,12 @@ public class BDTranslate implements Constants {
 					linkStrings.add(matcher.group(12));
 				}
 			}
+//			System.out.println(BDTranslate.BDTRANSLATEKEY_STRING);
 			queryString = PATTERN_LINK.matcher(srcContent).replaceAll("\r\n_____\r\n");
 			final HttpClient httpclient = new DefaultHttpClient();
 			final HttpPost httpPost = new HttpPost(BDTRANSLATEURL_STRING);
 			final ArrayList<NameValuePair> args = new ArrayList<NameValuePair>();
-			args.add(new BasicNameValuePair("client_id", BDTRANSLATEKEY_STRING));
+			args.add(new BasicNameValuePair("client_id", BDTranslate.BDTRANSLATEKEY_STRING));
 			args.add(new BasicNameValuePair("from", "auto"));
 			args.add(new BasicNameValuePair("to", "auto"));
 			args.add(new BasicNameValuePair("q", queryString));

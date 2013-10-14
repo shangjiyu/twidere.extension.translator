@@ -53,12 +53,14 @@ public class SettingsActivity extends PreferenceActivity implements
 		// TODO Auto-generated method stub
 		if (preference.getKey().equals(getString(R.string.baidu_client_id))) {
 			if (newValue != null && newValue.toString().length() == 24) {
+				BDTranslate.BDTRANSLATEKEY_STRING = (String) newValue;
 				return true;
 			}else {
 				Toast.makeText(SettingsActivity.this, "incorrect baidu app key!please reinpiut", Toast.LENGTH_SHORT).show();
 			}
 		}else if (preference.getKey().equals(getString(R.string.Bing_client_secret))) {
 			if (newValue != null && newValue.toString().length() == 44) {
+				MSTranslate.CLIEND_SECRET_STRING = (String) newValue;
 				return true;
 			}else {
 				Toast.makeText(SettingsActivity.this, "incorrect Bing API Secret!please reinpiut", Toast.LENGTH_SHORT).show();
