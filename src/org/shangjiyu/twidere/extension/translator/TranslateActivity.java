@@ -73,9 +73,9 @@ public class TranslateActivity extends Activity implements Constants,org.mariota
 		final String action = intent.getAction(); 
 		setContentView(R.layout.main);
 		sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-		if (sharedPreferences.getBoolean(getString(R.string.baidu_translate_api), false)) {
+		if (sharedPreferences.getBoolean(getString(R.string.baidu_translate_api_checkbox), false)) {
 			isBaiduTranslateAPI = true;
-		}else if (sharedPreferences.getBoolean(getString(R.string.microsoft_translate_api), false)) {
+		}else if (sharedPreferences.getBoolean(getString(R.string.microsoft_translate_api_checkbox), false)) {
 			isBaiduTranslateAPI = false;
 		}
 		
