@@ -39,8 +39,8 @@ public class BDTranslate implements Constants {
 
 	protected static String BDTRANSLATEKEY_STRING;
 	private static final String BDTRANSLATEURL_STRING = Constants.BDTRANSLATEURL_STRING;
-	private static final Pattern PATTERN_LINK = Pattern.compile(Constants.NONEED2TRANSLAETPORTION, Pattern.CASE_INSENSITIVE);
-	private static final Pattern PATTERN_ALPHA = Pattern.compile("_____|_ _ _ _ _");
+	private static final Pattern PATTERN_NNTP = Pattern.compile(Constants.NONEED2TRANSLAETPORTION, Pattern.CASE_INSENSITIVE);
+	private static final Pattern PATTERN_ALPHA = Pattern.compile("(444)");
 	private final ArrayList<String> linkStrings = new ArrayList<String>();
 	private int uneed2TranslateElementIndex = 0;
 	
@@ -51,7 +51,7 @@ public class BDTranslate implements Constants {
 	public BDTranslateResponse postTranslate(String srcContent) throws BDTranslateException, IllegalStateException, JSONException {
 		try {
 			String queryString = "";
-			final Matcher matcher = PATTERN_LINK.matcher(srcContent);
+			final Matcher matcher = PATTERN_NNTP.matcher(srcContent);
 			while (matcher.find()) {
 				if (matcher.group(1) != null) {
 					linkStrings.add(matcher.group(1));
@@ -62,7 +62,7 @@ public class BDTranslate implements Constants {
 				}
 			}
 //			System.out.println(BDTranslate.BDTRANSLATEKEY_STRING);
-			queryString = PATTERN_LINK.matcher(srcContent).replaceAll("\r\n_____\r\n");
+			queryString = PATTERN_NNTP.matcher(srcContent).replaceAll("\r\n444\r\n");
 			final HttpClient httpclient = new DefaultHttpClient();
 			final HttpPost httpPost = new HttpPost(BDTRANSLATEURL_STRING);
 			final ArrayList<NameValuePair> args = new ArrayList<NameValuePair>();

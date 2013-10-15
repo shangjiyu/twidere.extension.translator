@@ -61,8 +61,8 @@ public class MSTranslate implements Constants {
 	private static final String GRANT_TYPE_STRING = Constants.GRANT_TYPE_STRING;
 	private static final String DATAMARKETACCESSURL_STRING = Constants.DATAMARKETACCESSURL_STRING;
 	private static final String MSTRANSLATEURL_STRING = Constants.MSTRANSLATEURL_STRING;
-	private static final Pattern PATTERN_LINK = Pattern.compile(Constants.NONEED2TRANSLAETPORTION, Pattern.CASE_INSENSITIVE);
-	private static final Pattern PATTERN_ALPHA = Pattern.compile("(777)");
+	private static final Pattern PATTERN_NNTP = Pattern.compile(Constants.NONEED2TRANSLAETPORTION, Pattern.CASE_INSENSITIVE);
+	private static final Pattern PATTERN_ALPHA = Pattern.compile("(444)");
 	private final ArrayList<String> linkStrings = new ArrayList<String>();
 	private String ACCESS_TOKEN_STRING = null;
 	private int uneed2TranslateElementIndex = 0;
@@ -74,7 +74,7 @@ public class MSTranslate implements Constants {
 	public MSTranslateResponse postTranslate(String srcContent, String to) throws MSTranslateException, IllegalStateException, JSONException {
 		try {
 			String queryString = "";
-			final Matcher matcher = PATTERN_LINK.matcher(srcContent);
+			final Matcher matcher = PATTERN_NNTP.matcher(srcContent);
 			while (matcher.find()) {
 				if (matcher.group(1) != null) {
 					linkStrings.add(matcher.group(1));
@@ -84,7 +84,7 @@ public class MSTranslate implements Constants {
 					linkStrings.add(matcher.group(12));
 				}
 			}
-			queryString = PATTERN_LINK.matcher(srcContent).replaceAll("777");
+			queryString = PATTERN_NNTP.matcher(srcContent).replaceAll("444");
 			final String srcString = queryString;
 			queryString = URLEncoder.encode(queryString,"UTF-8");
 			if (ACCESS_TOKEN_STRING == null) {
