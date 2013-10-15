@@ -1,21 +1,21 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="app_name">Twidere.extension.translator</string>
+    <string name="app_name">Twidere extension translator</string>
     <string name="extension_translate_name">Translate</string>
     <string name="baidu_translate_api_settings">Baidu Translate API Settings</string>
     <string name="baidu_translate_api_checkbox">BDTCheckbox</string>
     <string name="microsoft_translate_api_settings">Microsoft Translate API Settings</string>
     <string name="microsoft_translate_api_checkbox">MSTCheckbox</string>
     <string name="client_id">Clinet ID</string>
-    <string name="baidu_client_id">BaiduClinetID</string>
-    <string name="Bing_client_id">BingClinetID</string>
+    <string name="baidu_client_id">Baidu Clinet ID</string>
+    <string name="Bing_client_id">Bing Clinet ID</string>
     <string name="client_secret">Client Secret</string>
      <string name="Bing_client_secret">Bing Client Secret</string>
     <string name="Bing_client_secret_value">l/t7OPv/O+Ye68qESMF2RwN7pV+jajAxrW8YDrMbmoo=</string>
     <string name="baidu_client_id_value">0QLIOD1cdfmA1hH1D7wN1nHy</string>
     <string name="Bing_client_id_value">firefox_inline_translate</string>
-    <string name="baidu_translate_api_setting_title">baidu translate api setting title</string>
-    <string name="microsoft_translate_api_setting_title">Microsoft Translate API setting</string>
+    <string name="baidu_translate_api_setting_title">Baidu Translate API</string>
+    <string name="microsoft_translate_api_setting_title">Microsoft Translate API</string>
     <string name="baidu_translate_layout_title">BaiduTranslator</string>
     <string name="Bing_translate_layout_title">BingTranslator</string>
     <string name="share">Share</string>

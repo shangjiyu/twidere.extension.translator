@@ -10,7 +10,7 @@
                 android:enabled="true" 
                 android:defaultValue="true"/>
             <EditTextPreference 
-                android:title="@string/client_id" 
+                android:title="@string/baidu_client_id" 
                 android:dependency="@string/baidu_translate_api_checkbox" 
                 android:defaultValue="@string/baidu_client_id_value" 
                 android:summary="@string/baidu_client_id" 

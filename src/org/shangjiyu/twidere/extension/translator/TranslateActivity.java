@@ -226,7 +226,6 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 				mPreview.setText(TRANSLATED_STRING);
 				isTranslated = true;
 				isOrignal = false;
-				translateButton.setEnabled(true);
 			} else if (result instanceof MSTranslateException) {
 				System.out.println(((MSTranslateException) result).getMessage());
 				Toast.makeText(TranslateActivity.this,
@@ -236,6 +235,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 				Toast.makeText(TranslateActivity.this, R.string.error_unknown_error, Toast.LENGTH_LONG).show();
 			}
 			mMSTranslateTask = null;
+			translateButton.setEnabled(true);
 			super.onPostExecute(result);
 		}
 
@@ -282,7 +282,6 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 				mPreview.setText(TRANSLATED_STRING);
 				isTranslated = true;
 				isOrignal = false;
-				translateButton.setEnabled(true);
 			} else if (result instanceof BDTranslateException) {
 				Toast.makeText(TranslateActivity.this,
 						getString(R.string.error_message, ((BDTranslateException) result).getMessage()),
@@ -291,6 +290,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 				Toast.makeText(TranslateActivity.this, R.string.error_unknown_error, Toast.LENGTH_LONG).show();
 			}
 			mBDTranslateTask = null;
+			translateButton.setEnabled(true);
 			super.onPostExecute(result);
 		}
 
