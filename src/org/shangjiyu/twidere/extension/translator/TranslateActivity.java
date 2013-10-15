@@ -39,10 +39,10 @@ import android.widget.Toast;
  * @date 2013-10-11 下午10:01:38
  */
 
-public class TranslateActivity extends Activity implements Constants,org.mariotaku.twidere.Constants,OnClickListener {	
+public class TranslateActivity extends Activity implements Constants,OnClickListener {	
 
 	private TextView mPreview, layoutTitle;
-	private ImageButton mActionButton;
+	private ImageButton mActionButton, translateButton;
 	private ProgressBar mProgress;
 	private String mUser;
 	private ParcelableStatus mStatus;
@@ -82,10 +82,11 @@ public class TranslateActivity extends Activity implements Constants,org.mariota
 		mPreview = (TextView) findViewById(R.id.text);
 		layoutTitle = (TextView) findViewById(R.id.translat_layout_title);
 		mActionButton = (ImageButton) findViewById(R.id.action);
+		translateButton = (ImageButton) findViewById(R.id.translate);
 		mProgress = (ProgressBar) findViewById(R.id.progress);
 		TRANSLATED_STRING = savedInstanceState != null ? savedInstanceState.getString(Twidere.INTENT_KEY_TEXT) : null;
 		mUser = savedInstanceState != null ? savedInstanceState.getString(Twidere.INTENT_KEY_USER) : null;
-		
+		translateButton.setEnabled(false);
 		if (TRANSLATED_STRING == null || mUser == null) {
 			if (Twidere.INTENT_ACTION_EXTENSION_OPEN_STATUS.equals(action)) {
 				mStatus = Twidere.getStatusFromIntent(getIntent());
@@ -225,6 +226,7 @@ public class TranslateActivity extends Activity implements Constants,org.mariota
 				mPreview.setText(TRANSLATED_STRING);
 				isTranslated = true;
 				isOrignal = false;
+				translateButton.setEnabled(true);
 			} else if (result instanceof MSTranslateException) {
 				System.out.println(((MSTranslateException) result).getMessage());
 				Toast.makeText(TranslateActivity.this,
@@ -280,6 +282,7 @@ public class TranslateActivity extends Activity implements Constants,org.mariota
 				mPreview.setText(TRANSLATED_STRING);
 				isTranslated = true;
 				isOrignal = false;
+				translateButton.setEnabled(true);
 			} else if (result instanceof BDTranslateException) {
 				Toast.makeText(TranslateActivity.this,
 						getString(R.string.error_message, ((BDTranslateException) result).getMessage()),
