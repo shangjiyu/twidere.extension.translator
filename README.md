@@ -12,6 +12,8 @@ Baidu translate API setting
 	1. 源语言被识别为中文，则翻译方向为“中 -> 英”；
     2. 源语言被识别为英文，则翻译方向为“英 -> 中”；
     3. 源语言被识别为日文，则翻译方向为“日 -> 中”。
+    4. 其实Baidu的API还支持中英、中日、英日、中泰、英泰、中法、中西、中阿、英阿、中韩等互译
+   	5. 每个Key 默认翻译API使用频率为每个IP 1000次/小时，支持扩容(要申请)
     
 Bing Translate API setting
 ------------------------------------------
@@ -21,7 +23,8 @@ Bing Translate API setting
 ### Supported languages and translate rules
 	1. 源语言被识别为中文，则翻译方向为“中 -> 英”；
     2. 源语言被识别为其他，则翻译方向为“其他 -> 中”。
-    3. [其他语言(毛估估几十种)](http://msdn.microsoft.com/en-us/library/hh456380.aspx)
+    3. 其他语言(毛估估几十种，地址在：http://msdn.microsoft.com/en-us/library/hh456380.aspx)
+    4. 每个Client_Secret免费额度是每个月2000000个character
     
 ### Contact
 twitter [@shangjiyu](https://twitter.com/shangjiyu)
