@@ -30,10 +30,10 @@ import org.apache.http.util.EntityUtils;
  *
  */
 
-public class GoogleTranslate {
+public class GoogleTranslate implements Constants {
 
-	private static final String GOOGLETRANSLATEURL_STRING = "https://hong18300.appspot.com/";
-	private static final Pattern PATTERN_LINK = Pattern.compile("((RT\\s?)?(@([a-zA-Z0-9_\\u4e00-\\u9fa5]{1,20})):?)|((https?://)([-\\w\\.]+)+(:\\d+)?(/([\\w/_\\-\\.]*(\\?\\S+)?)?)?)|(\\#[a-zA-Z0-9_%\\u4e00-\\u9fa5]*)", Pattern.CASE_INSENSITIVE);
+	private static final String GOOGLETRANSLATEURL_STRING = Constants.GOOGLETRANSLATEONBAE_STRING;
+	private static final Pattern PATTERN_LINK = Pattern.compile(Constants.NONEED2TRANSLAETPORTION, Pattern.CASE_INSENSITIVE);
 	private static final Pattern PATTERN_ALPHA = Pattern.compile("(11111)");
 	private final ArrayList<String> linkStrings = new ArrayList<String>();
 	private int uneed2TranslateElementIndex = 0;
@@ -42,7 +42,7 @@ public class GoogleTranslate {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TranslateResponse postTranslate(String srcContent) throws GoogleTranslateException {
+	public GGTranslateResponse postTranslate(String srcContent) throws GoogleTranslateException {
 		try {
 			String queryString = "";
 			final Matcher matcher = PATTERN_LINK.matcher(srcContent);
@@ -57,11 +57,13 @@ public class GoogleTranslate {
 			}
 			queryString = PATTERN_LINK.matcher(srcContent).replaceAll("11111");
 			queryString = URLEncoder.encode(queryString,"UTF-8");
-			final String getURL = GOOGLETRANSLATEURL_STRING+"?"+"&msg="+queryString;
-			System.out.println(getURL);
+			final String getURL = GOOGLETRANSLATEURL_STRING+"?"+"msg="+queryString;
 			final HttpClient httpclient = new DefaultHttpClient();
 			final HttpGet httpGet = new HttpGet();
 			httpGet.setURI(new URI(getURL));
+//			final HttpPost httpPost = new HttpPost(GOOGLETRANSLATEURL_STRING);
+//			final ArrayList<NameValuePair> parameters = new ArrayList<NameValuePair>();
+//			parameters.add(new BasicNameValuePair("msg", queryString));
 			final HttpResponse response = httpclient.execute(httpGet);
 			return parseTranslateResponse(EntityUtils.toString(response.getEntity()));
 		} catch ( Exception e) {
@@ -81,11 +83,10 @@ public class GoogleTranslate {
 	 * @return TranslateResponse    返回类型
 	 * @throws
 	 */
-	public TranslateResponse parseTranslateResponse(String response) {
+	public GGTranslateResponse parseTranslateResponse(String response) {
 		String from = "yangpi", to = "chinese", translateResult = response;
-		System.out.println(response);
 		translateResult = replaceURL(PATTERN_ALPHA, translateResult);
-		return new TranslateResponse(from, to, translateResult);
+		return new GGTranslateResponse(from, to, translateResult);
 	}
 	
 	public String replaceURL(Pattern pattern,String toReplaceString) {
@@ -127,10 +128,10 @@ public class GoogleTranslate {
 	 * @date 2013-9-21 下午4:18:58
 	 *
 	 */
-	public static class TranslateResponse {
+	public static class GGTranslateResponse {
 		public final String from, to, translateResult;
 
-		private TranslateResponse(String from, String to, String translateResult) {
+		private GGTranslateResponse(String from, String to, String translateResult) {
 			this.from = from;
 			this.to = to;
 			this.translateResult = translateResult;

@@ -11,6 +11,8 @@ package org.shangjiyu.twidere.extension.translator;
 
 import org.mariotaku.twidere.Twidere;
 import org.mariotaku.twidere.model.ParcelableStatus;
+import org.shangjiyu.twidere.extension.translator.GoogleTranslate.GGTranslateResponse;
+import org.shangjiyu.twidere.extension.translator.GoogleTranslate.GoogleTranslateException;
 import org.shangjiyu.twidere.extension.translator.R;
 import org.shangjiyu.twidere.extension.translator.BDTranslate.BDTranslateException;
 import org.shangjiyu.twidere.extension.translator.BDTranslate.BDTranslateResponse;
@@ -48,13 +50,12 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 	private ParcelableStatus mStatus;
 	private MSTranslateTask mMSTranslateTask;
 	private BDTranslateTask mBDTranslateTask;
+	private GGTranslateTask mGGTranslateTask;
 	private SharedPreferences sharedPreferences;
 	private boolean isTranslated = false;
 	private boolean isOrignal = true;
 	private String ORIGINAL_STRING = "";
 	private String TRANSLATED_STRING = "";
-	
-	public static boolean isBaiduTranslateAPI = true;
 	
 	/********************************************************
 	 *Title: onCreate
@@ -69,16 +70,9 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		final Intent intent = getIntent();
-//		final Uri data = intent.getData();
 		final String action = intent.getAction(); 
 		setContentView(R.layout.main);
 		sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-		if (sharedPreferences.getBoolean(getString(R.string.baidu_translate_api_checkbox), false)) {
-			isBaiduTranslateAPI = true;
-		}else if (sharedPreferences.getBoolean(getString(R.string.microsoft_translate_api_checkbox), false)) {
-			isBaiduTranslateAPI = false;
-		}
-		
 		mPreview = (TextView) findViewById(R.id.text);
 		layoutTitle = (TextView) findViewById(R.id.translat_layout_title);
 		mActionButton = (ImageButton) findViewById(R.id.action);
@@ -128,7 +122,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 	 * @throws
 	 */
 	private void initTranslateTask(){
-		if (isBaiduTranslateAPI) {
+		if (sharedPreferences.getBoolean(getString(R.string.baidu_translate_api_checkbox), false)) {
 			layoutTitle.setText(R.string.baidu_translate_layout_title);
 			BDTranslate.BDTRANSLATEKEY_STRING = sharedPreferences.getString(getString(R.string.baidu_client_id), Constants.BAIDU_CLIENT_ID);
 			if (mBDTranslateTask != null) {
@@ -137,7 +131,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 				mBDTranslateTask = new BDTranslateTask(ORIGINAL_STRING);
 				mBDTranslateTask.execute();
 			}
-		}else {
+		}else if (sharedPreferences.getBoolean(getString(R.string.microsoft_translate_api_checkbox), false)) {
 			layoutTitle.setText(R.string.Bing_translate_layout_title);
 			MSTranslate.CLIEND_SECRET_STRING = sharedPreferences.getString(getString(R.string.Bing_client_secret), Constants.MICROSOFT_CLIEN_SECRET);
 			if (mMSTranslateTask != null) {
@@ -146,6 +140,16 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 				mMSTranslateTask = new MSTranslateTask(ORIGINAL_STRING);
 				mMSTranslateTask.execute();
 			}
+		}else if (sharedPreferences.getBoolean(getString(R.string.google_translate_api_checkbox), false)) {
+			layoutTitle.setText(R.string.Google_translate_layout_title);
+			if (mGGTranslateTask != null) {
+				mGGTranslateTask.cancel(true);
+			}else {
+				mGGTranslateTask = new GGTranslateTask(ORIGINAL_STRING);
+				mGGTranslateTask.execute();
+			}
+		}else {
+			Toast.makeText(TranslateActivity.this, getString(R.string.none_selected_toast), Toast.LENGTH_LONG).show();
 		}
 	}
 	
@@ -193,7 +197,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 	/********************************************************
 	 * @ClassName: MSTranslateTask
 	 * @Description: TODO(Bing translate api)
-	 * @author jiyu
+	 * @author shangjiyu
 	 * @date 2013-10-13 下午6:35:48
 	 */
 	public final class MSTranslateTask extends AsyncTask<Void, Void, Object> {
@@ -297,6 +301,61 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 		@Override
 		protected void onPreExecute() {
 			Toast.makeText(TranslateActivity.this, R.string.waiting_for_baidu_translated_text, Toast.LENGTH_LONG).show();
+			super.onPreExecute();
+		}
+	}
+	
+	/********************************************************
+	 * @ClassName: GGTranslateTask
+	 * @Description: TODO(google translate api)
+	 * @author shangjiyu
+	 * @date 2013-10-20 下午8:40:36
+	 */
+	public final class GGTranslateTask extends AsyncTask<Void, Void, Object> {
+
+		private final String srcContent;
+
+		public GGTranslateTask(String srcContent) {
+			this.srcContent = srcContent;
+		}
+
+		@Override
+		protected Object doInBackground(Void... args) {
+			final GoogleTranslate translate = new GoogleTranslate();
+			try {
+				return translate.postTranslate(srcContent);
+			} catch (Exception e) {
+				// TODO: handle exception
+				return e;
+			}
+		}
+
+		@Override
+		protected void onPostExecute(Object result) {
+			mProgress.setVisibility(View.GONE);
+			mActionButton.setVisibility(View.VISIBLE);
+			mActionButton.setImageResource(result instanceof GGTranslateResponse ? R.drawable.ic_menu_share
+					: R.drawable.ic_menu_send);
+			if (result instanceof GGTranslateResponse ) {
+				TRANSLATED_STRING = ((GGTranslateResponse ) result).translateResult;
+				mPreview.setText(TRANSLATED_STRING);
+				isTranslated = true;
+				isOrignal = false;
+			} else if (result instanceof GoogleTranslateException) {
+				Toast.makeText(TranslateActivity.this,
+						getString(R.string.error_message, ((GoogleTranslateException) result).getMessage()),
+						Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(TranslateActivity.this, R.string.error_unknown_error, Toast.LENGTH_LONG).show();
+			}
+			mGGTranslateTask = null;
+			translateButton.setEnabled(true);
+			super.onPostExecute(result);
+		}
+
+		@Override
+		protected void onPreExecute() {
+			Toast.makeText(TranslateActivity.this, R.string.waiting_for_google_translated_text, Toast.LENGTH_LONG).show();
 			super.onPreExecute();
 		}
 	}

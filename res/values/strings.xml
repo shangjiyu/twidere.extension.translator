@@ -6,6 +6,8 @@
     <string name="baidu_translate_api_checkbox">BDTCheckbox</string>
     <string name="microsoft_translate_api_settings">Microsoft Translate API Settings</string>
     <string name="microsoft_translate_api_checkbox">MSTCheckbox</string>
+    <string name="google_translate_api_settings">Google Translate API Settings</string>
+    <string name="google_translate_api_checkbox">GGTCheckbox</string>
     <string name="client_id">Clinet ID</string>
     <string name="baidu_client_id">Baidu Clinet ID</string>
     <string name="Bing_client_id">Bing Clinet ID</string>
@@ -15,13 +17,18 @@
     <string name="baidu_client_id_value">0QLIOD1cdfmA1hH1D7wN1nHy</string>
     <string name="Bing_client_id_value">firefox_inline_translate</string>
     <string name="baidu_translate_api_setting_title">Baidu Translate API</string>
+    <string name="Google_translate_api_setting_title">Google Translate API</string>
     <string name="microsoft_translate_api_setting_title">Microsoft Translate API</string>
     <string name="baidu_translate_layout_title">BaiduTranslator</string>
     <string name="Bing_translate_layout_title">BingTranslator</string>
+    <string name="Google_translate_layout_title">GoogleTranslator</string>
     <string name="share">Share</string>
     <string name="waiting_for_bing_translated_text">Waiting For Bing Translate Results</string>
     <string name="waiting_for_baidu_translated_text">Waiting For Baidu Translate Results</string>
+    <string name="waiting_for_google_translated_text">Waiting For Google Translate Results</string>
     <string name="error_message">Error: <xliff:g id="message">%s</xliff:g></string>
     <string name="error_unknown_error">Error: Unknown error, this is probably a bug.</string>
+    
+    <string name="none_selected_toast">U should at least select one translate API checkbox by default baidu translate API is selected.</string>
 
 </resources>

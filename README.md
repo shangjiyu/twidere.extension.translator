@@ -26,5 +26,16 @@ Bing Translate API setting
     3. 其他语言(毛估估几十种，地址在：http://msdn.microsoft.com/en-us/library/hh456380.aspx)
     4. 每个Client_Secret免费额度是每个月2000000个character
     
-### Contact
+Google Translate API support
+------------------------------------------
+### How to get Google Translate API Key
+[this is a free api but I cannot guarantee its availableness](http://spidernitt.wordpress.com/2013/02/25/use-google-translate-for-free-in-your-apps/)<br/>
+
+### Supported languages and translate rules
+    1. 源语言被识别为其他，则翻译方向为“其他 -> 中”。
+    2. 其他语言支持71种语言。
+    
+Contact
+---------------------------------------
 twitter [@shangjiyu](https://twitter.com/shangjiyu)
+sina_weibo [@jia_4tw](http://weibo.com/shangjiyu)

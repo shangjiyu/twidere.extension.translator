@@ -29,6 +29,8 @@ public interface Constants {
 	public static final String DATAMARKETACCESSURL_STRING = "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13";
 	public static final String MSTRANSLATEURL_STRING = "http://api.microsofttranslator.com/V2/Http.svc/Translate";
 	
+	public static final String GOOGLETRANSLATEONBAE_STRING = "http://mytranslategoogle.duapp.com";
+	
 	public static final String NONEED2TRANSLAETPORTION = "((RT\\s?)?(@([a-zA-Z0-9_\\u4e00-\\u9fa5]{1,20})):?)|((https?://)([-\\w\\.]+)+(:\\d+)?(/([\\w/_\\-\\.]*(\\?\\S+)?)?)?)|(\\#[a-zA-Z0-9_%\\u4e00-\\u9fa5]*)";
 	
 }

@@ -11,6 +11,8 @@ package org.shangjiyu.twidere.extension.translator;
 
 import org.shangjiyu.twidere.extension.translator.R;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -26,7 +28,7 @@ import android.widget.Toast;
  */
 
 public class SettingsActivity extends PreferenceActivity implements
-		OnPreferenceChangeListener {
+		OnPreferenceChangeListener, OnSharedPreferenceChangeListener {
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -37,6 +39,7 @@ public class SettingsActivity extends PreferenceActivity implements
 		addPreferencesFromResource(R.xml.settings);
 		findPreference(getString(R.string.baidu_client_id)).setOnPreferenceChangeListener(this);
 		findPreference(getString(R.string.Bing_client_secret)).setOnPreferenceChangeListener(this);
+		PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
 	}
 
 	/********************************************************
@@ -78,26 +81,21 @@ public class SettingsActivity extends PreferenceActivity implements
 	 * @see android.content.SharedPreferences.OnSharedPreferenceChangeListener#onSharedPreferenceChanged(android.content.SharedPreferences, java.lang.String)
 	 *********************************************************/
 	
-//	@Override
-//	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-//			String key) {
-//		// TODO Auto-generated method stub
-//		if (sharedPreferences.getBoolean(getString(R.string.baidu_translate_api_checkbox), false)) {
-//			String baiduAPIKey = sharedPreferences.getString(getString(R.string.baidu_client_id_value), null);
-//			if ( baiduAPIKey != null && baiduAPIKey.length() == 24) {
-//				BDTranslate.BDTRANSLATEKEY_STRING = baiduAPIKey;
-//			}else {
-//				Toast.makeText(SettingsActivity.this, "incorrect baidu app key!please reinpiut", Toast.LENGTH_SHORT).show();
-//			}
-//		}else if (sharedPreferences.getBoolean(getString(R.string.microsoft_translate_api_checkbox), false)) {
-//			String bingAPIkey = sharedPreferences.getString(getString(R.string.Bing_client_secret_value), null);
-//			if (bingAPIkey != null && bingAPIkey.length() == 44) {
-//				MSTranslate.CLIEND_SECRET_STRING = bingAPIkey;
-//			}else {
-//				Toast.makeText(SettingsActivity.this, "incorrect Bing API Secret!please reinpiut", Toast.LENGTH_SHORT).show();
-//			}
-//		}
-//	}
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+			String key) {
+		// TODO Auto-generated method stub
+		if (sharedPreferences.getBoolean(getString(R.string.baidu_translate_api_checkbox), false)) {
+			return;
+		}else if (sharedPreferences.getBoolean(getString(R.string.microsoft_translate_api_checkbox), false)) {
+			return;
+		}else if (sharedPreferences.getBoolean(getString(R.string.google_translate_api_checkbox), false)) {
+			return;
+		}else {
+			Toast.makeText(SettingsActivity.this, "you have to at least select one API", Toast.LENGTH_LONG).show();
+			sharedPreferences.edit().putBoolean(getString(R.string.baidu_translate_api_checkbox), true).commit();
+		}
+	}
 	
 }
 
