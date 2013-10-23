@@ -17,6 +17,7 @@
                 android:enabled="true" 
                 android:key="@string/baidu_client_id"
                 android:dialogTitle="@string/baidu_client_id"/>
+            <ListPreference android:entryValues="@array/baidu_supported_language_value" android:title="@string/baidu_supported_language_list" android:entries="@array/baidu_supported_language_entry" android:key="@string/baidu_supported_language_list" android:dependency="@string/baidu_translate_api_checkbox" android:dialogTitle="target language"/>
         </PreferenceCategory>
         <PreferenceCategory 
             android:title="@string/microsoft_translate_api_settings" 
@@ -42,8 +43,10 @@
                 android:summary="@string/Bing_client_secret" 
                 android:enabled="true"
                 android:dialogTitle="@string/Bing_client_secret"/>
+            <ListPreference android:title="@string/bing_supported_language_list" android:key="@string/bing_supported_language_list" android:dependency="@string/microsoft_translate_api_checkbox" android:entryValues="@array/bing_supported_language_value" android:dialogTitle="target language" android:entries="@array/bing_supported_language_entry"/>
         </PreferenceCategory>
         <PreferenceCategory android:title="@string/google_translate_api_settings" android:key="@string/google_translate_api_settings" android:summary="settings about google translate api">
             <CheckBoxPreference android:key="@string/google_translate_api_checkbox" android:title="@string/Google_translate_api_setting_title"/>
+            <ListPreference android:entryValues="@array/google_supported_language_value" android:title="@string/google_supported_language_list" android:dialogTitle="target language" android:entries="@array/google_supported_language_entry" android:key="@string/google_supported_language_list" android:dependency="@string/google_translate_api_checkbox"/>
         </PreferenceCategory>
     </PreferenceScreen>

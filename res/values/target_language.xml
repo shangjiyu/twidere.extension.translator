@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="baidu_supported_language_entry">
+        <item>阿拉伯语</item>
+        <item>法语</item>
+        <item>韩语</item>
+        <item>日语</item>
+        <item>西班牙语</item>
+        <item>泰语</item>
+        <item>英语</item>
+        <item>粤语</item>
+        <item>中文</item>
+    </string-array>
+    <string-array name="baidu_supported_language_value">
+        <item>ara</item>
+        <item>fra</item>
+        <item>kor</item>
+        <item>jp</item>
+        <item>spa</item>
+        <item>th</item>
+        <item>en</item>
+        <item>yue</item>
+        <item>zh</item>
+    </string-array>
+    <string-array name="bing_supported_language_entry">
+        <item>阿拉伯语</item>
+        <item>法语</item>
+        <item>韩语</item>
+        <item>日语</item>
+        <item>西班牙语</item>
+        <item>泰语</item>
+        <item>英语</item>
+        <item>粤语</item>
+        <item>中文</item>
+        <item>德语</item>
+        <item>俄语</item>
+    </string-array>
+    <string-array name="bing_supported_language_value">
+        <item>Arabic</item>
+        <item>French</item>
+        <item>Korean</item>
+        <item>Japanese</item>
+        <item>Spanish</item>
+        <item>Thai</item>
+        <item>English</item>
+        <item>Chinese (Traditional)</item>
+        <item>Chinese (Simplified)</item>
+        <item>German</item>
+        <item>Russian</item>
+    </string-array>
+    <string-array name="google_supported_language_entry">
+        <item>阿拉伯语</item>
+        <item>法语</item>
+        <item>韩语</item>
+        <item>日语</item>
+        <item>西班牙语</item>
+        <item>泰语</item>
+        <item>英语</item>
+        <item>粤语</item>
+        <item>中文</item>
+        <item>德语</item>
+        <item>俄语</item>
+        <item>拉丁语</item>
+        <item>菲律宾语</item>
+    </string-array>
+    <string-array name="google_supported_language_value">
+        <item>ar</item>
+        <item>fr</item>
+        <item>ko</item>
+        <item>ja</item>
+        <item>es</item>
+        <item>th</item>
+        <item>en</item>
+        <item>zh-TW</item>
+        <item>zh-CN</item>
+        <item>de</item>
+        <item>ru</item>
+        <item>la</item>
+        <item>tl</item>
+    </string-array>
+    
+</resources>

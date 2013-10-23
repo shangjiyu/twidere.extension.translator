@@ -56,6 +56,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 	private boolean isOrignal = true;
 	private String ORIGINAL_STRING = "";
 	private String TRANSLATED_STRING = "";
+	private String targetLanguageString;
 	
 	/********************************************************
 	 *Title: onCreate
