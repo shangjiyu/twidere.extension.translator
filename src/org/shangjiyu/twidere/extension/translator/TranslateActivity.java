@@ -56,7 +56,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 	private boolean isOrignal = true;
 	private String ORIGINAL_STRING = "";
 	private String TRANSLATED_STRING = "";
-	private String targetLanguageString;
+	public static String targetLanguageString;
 	
 	/********************************************************
 	 *Title: onCreate
@@ -126,6 +126,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 		if (sharedPreferences.getBoolean(getString(R.string.baidu_translate_api_checkbox), false)) {
 			layoutTitle.setText(R.string.baidu_translate_layout_title);
 			BDTranslate.BDTRANSLATEKEY_STRING = sharedPreferences.getString(getString(R.string.baidu_client_id), Constants.BAIDU_CLIENT_ID);
+			TranslateActivity.targetLanguageString = sharedPreferences.getString(getString(R.string.baidu_supported_language_list), "zh");
 			if (mBDTranslateTask != null) {
 				mBDTranslateTask.cancel(true);
 			}else {
@@ -135,6 +136,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 		}else if (sharedPreferences.getBoolean(getString(R.string.microsoft_translate_api_checkbox), false)) {
 			layoutTitle.setText(R.string.Bing_translate_layout_title);
 			MSTranslate.CLIEND_SECRET_STRING = sharedPreferences.getString(getString(R.string.Bing_client_secret), Constants.MICROSOFT_CLIEN_SECRET);
+			TranslateActivity.targetLanguageString = sharedPreferences.getString(getString(R.string.bing_supported_language_list), "Chinese (Simplified)");
 			if (mMSTranslateTask != null) {
 				mMSTranslateTask.cancel(true);
 			}else {
@@ -143,6 +145,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 			}
 		}else if (sharedPreferences.getBoolean(getString(R.string.google_translate_api_checkbox), false)) {
 			layoutTitle.setText(R.string.Google_translate_layout_title);
+			TranslateActivity.targetLanguageString = sharedPreferences.getString(getString(R.string.google_supported_language_list), "zh-CN");
 			if (mGGTranslateTask != null) {
 				mGGTranslateTask.cancel(true);
 			}else {
@@ -213,7 +216,7 @@ public class TranslateActivity extends Activity implements Constants,OnClickList
 		protected Object doInBackground(Void... args) {
 			final MSTranslate translate = new MSTranslate();
 			try {
-				return translate.postTranslate(srcContent,"zh-CHS");
+				return translate.postTranslate(srcContent,TranslateActivity.targetLanguageString);
 			} catch (Exception e) {
 				// TODO: handle exception
 				return e;

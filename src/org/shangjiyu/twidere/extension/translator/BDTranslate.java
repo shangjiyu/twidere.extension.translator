@@ -68,7 +68,7 @@ public class BDTranslate implements Constants {
 			final ArrayList<NameValuePair> args = new ArrayList<NameValuePair>();
 			args.add(new BasicNameValuePair("client_id", BDTranslate.BDTRANSLATEKEY_STRING));
 			args.add(new BasicNameValuePair("from", "auto"));
-			args.add(new BasicNameValuePair("to", "auto"));
+			args.add(new BasicNameValuePair("to", TranslateActivity.targetLanguageString));
 			args.add(new BasicNameValuePair("q", queryString));
 			httpPost.setEntity(new UrlEncodedFormEntity(args, HTTP.UTF_8));
 			final HttpResponse response = httpclient.execute(httpPost);

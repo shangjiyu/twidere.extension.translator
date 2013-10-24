@@ -57,7 +57,7 @@ public class GoogleTranslate implements Constants {
 			}
 			queryString = PATTERN_LINK.matcher(srcContent).replaceAll("11111");
 			queryString = URLEncoder.encode(queryString,"UTF-8");
-			final String getURL = GOOGLETRANSLATEURL_STRING+"?"+"msg="+queryString;
+			final String getURL = GOOGLETRANSLATEURL_STRING+"?"+"msg="+queryString+"&tl="+TranslateActivity.targetLanguageString;
 			final HttpClient httpclient = new DefaultHttpClient();
 			final HttpGet httpGet = new HttpGet();
 			httpGet.setURI(new URI(getURL));

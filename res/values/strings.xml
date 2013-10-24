@@ -5,12 +5,15 @@
     <string name="baidu_translate_api_settings">Baidu Translate API Settings</string>
     <string name="baidu_translate_api_checkbox">BDTCheckbox</string>
     <string name="baidu_supported_language_list">BDlanlist</string>
+    <string name="baidu_supported_language_list_title">chose a target language</string>
     <string name="microsoft_translate_api_settings">Microsoft Translate API Settings</string>
     <string name="microsoft_translate_api_checkbox">MSTCheckbox</string>
     <string name="bing_supported_language_list">MSlanlist</string>
+    <string name="bing_supported_language_list_title">chose a target language</string>
     <string name="google_translate_api_settings">Google Translate API Settings</string>
     <string name="google_translate_api_checkbox">GGTCheckbox</string>
     <string name="google_supported_language_list">GGlanlist</string>
+    <string name="google_supported_language_list_title">chose a target language</string>
     <string name="client_id">Clinet ID</string>
     <string name="baidu_client_id">Baidu Clinet ID</string>
     <string name="Bing_client_id">Bing Clinet ID</string>
